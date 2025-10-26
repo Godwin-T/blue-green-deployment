@@ -37,3 +37,4 @@ server {
         proxy_send_timeout 500ms;
         proxy_read_timeout 500ms;
     }
+}
