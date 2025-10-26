@@ -10,12 +10,11 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     env:
-      BLUE_IMAGE: ${{ vars.BLUE_IMAGE }}
-      GREEN_IMAGE: ${{ vars.GREEN_IMAGE }}
-      ACTIVE_POOL: ${{ vars.ACTIVE_POOL }}
-      RELEASE_ID_BLUE: ${{ vars.RELEASE_ID_BLUE }}
-      RELEASE_ID_GREEN: ${{ vars.RELEASE_ID_GREEN }}
-      PORT: ${{ vars.PORT }}
+      BLUE_IMAGE: ${{ secrets.BLUE_IMAGE }}
+      GREEN_IMAGE: ${{ secrets.GREEN_IMAGE }}
+      ACTIVE_POOL: ${{ secrets.ACTIVE_POOL }}
+      RELEASE_ID_BLUE: ${{ secrets.RELEASE_ID_BLUE }}
+      RELEASE_ID_GREEN: ${{ secrets.RELEASE_ID_GREEN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -42,9 +41,6 @@ jobs:
           RELEASE_ID_BLUE=${RELEASE_ID_BLUE}
           RELEASE_ID_GREEN=${RELEASE_ID_GREEN}
           EOF
-          if [ -n "${PORT:-}" ]; then
-            echo "PORT=${PORT}" >> .env
-          fi
 
       - name: Launch stack
         run: docker compose up -d
