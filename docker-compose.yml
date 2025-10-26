@@ -7,6 +7,7 @@ services:
     environment:
       RELEASE_ID: "${RELEASE_ID_BLUE}"
       PORT: "3000"
+      APP_POOL: "blue"
     expose:
       - "3000"
     ports:
@@ -30,6 +31,7 @@ services:
     environment:
       RELEASE_ID: "${RELEASE_ID_GREEN}"
       PORT: "3000"
+      APP_POOL: "green"
     expose:
       - "3000"
     ports:
