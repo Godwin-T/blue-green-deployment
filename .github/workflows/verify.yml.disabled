@@ -46,7 +46,7 @@ jobs:
         run: docker compose up -d
 
       - name: Verify automatic failover
-        run: ./scripts/verify_failover.sh
+        run: ./tests/verify_failover.sh
 
       - name: Collect logs on failure
         if: failure()
